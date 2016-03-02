@@ -30,6 +30,7 @@ import org.apache.struts2.dispatcher.ng.HostConfig;
 
 /**
  * Host configuration that wraps FilterConfig
+ * 对FilterConfig的封装
  */
 public class FilterHostConfig implements HostConfig {
 
@@ -38,10 +39,12 @@ public class FilterHostConfig implements HostConfig {
     public FilterHostConfig(FilterConfig config) {
         this.config = config;
     }
+    //根据init-param配置的param-name获取param-value的值
     public String getInitParameter(String key) {
         return config.getInitParameter(key);
     }
 
+    //返回初始化参数名的迭代器
     public Iterator<String> getInitParameterNames() {
         return MakeIterator.convert(config.getInitParameterNames());
     }

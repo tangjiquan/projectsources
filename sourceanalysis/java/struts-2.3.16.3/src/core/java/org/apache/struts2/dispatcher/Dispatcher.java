@@ -479,9 +479,12 @@ public class Dispatcher {
 
         try {
             init_FileManager();
+            //加载org/apache/struts2/default.properties
             init_DefaultProperties(); // [1]
+            //加载struts-default.xml,struts-plugin.xml,struts.xml
             init_TraditionalXmlConfigurations(); // [2]
             init_LegacyStrutsProperties(); // [3]
+            //用户自己实现的ConfigurationProviders类
             init_CustomConfigurationProviders(); // [5]
             init_FilterInitParameters() ; // [6]
             init_AliasStandardObjects() ; // [7]

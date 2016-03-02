@@ -99,6 +99,7 @@ public class InitOperations {
 
     /**
      * Create a {@link Dispatcher}
+     * 将FilterConfig中的配置信息解析出来，封装成一个Map，作为一个参数
      */
     private Dispatcher createDispatcher( HostConfig filterConfig ) {
         Map<String, String> params = new HashMap<String, String>();

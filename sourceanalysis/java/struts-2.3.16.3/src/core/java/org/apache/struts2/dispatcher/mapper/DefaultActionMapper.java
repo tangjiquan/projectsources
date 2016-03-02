@@ -251,18 +251,23 @@ public class DefaultActionMapper implements ActionMapper {
      */
     public ActionMapping getMapping(HttpServletRequest request, ConfigurationManager configManager) {
         ActionMapping mapping = new ActionMapping();
+        //获取请求的uri，既请求url中工程名后面的的部分，如：/save.action
         String uri = RequestUtils.getUri(request);
 
         int indexOfSemicolon = uri.indexOf(";");
         uri = (indexOfSemicolon > -1) ? uri.substring(0, indexOfSemicolon) : uri;
 
+        //删除扩展名，如.action或者.do
         uri = dropExtension(uri, mapping);
         if (uri == null) {
             return null;
         }
 
+        //从uri中分离得到请求的action名，命名空间
         parseNameAndNamespace(uri, mapping, configManager);
+        //处理特殊的请求参数
         handleSpecialParameters(request, mapping);
+        //如果允许动态调用，既是/userAction!getAll.action的请求，分离action名和方法名
         return parseActionName(mapping);
     }
 
@@ -322,8 +327,8 @@ public class DefaultActionMapper implements ActionMapper {
      */
     protected void parseNameAndNamespace(String uri, ActionMapping mapping, ConfigurationManager configManager) {
         String namespace, name;
-        int lastSlash = uri.lastIndexOf("/");
-        if (lastSlash == -1) {
+        int lastSlash = uri.lastIndexOf("/");//最后斜杠的位置
+        if (lastSlash == -1) {//如果没有斜杠，说明没有命名空间
             namespace = "";
             name = uri;
         } else if (lastSlash == 0) {
@@ -343,7 +348,7 @@ public class DefaultActionMapper implements ActionMapper {
             namespace = "";
             boolean rootAvailable = false;
             // Find the longest matching namespace, defaulting to the default
-            for (PackageConfig cfg : config.getPackageConfigs().values()) {
+            for (PackageConfig cfg : config.getPackageConfigs().values()) {//循环遍历配置文件中的package的标签
                 String ns = cfg.getNamespace();
                 if (ns != null && prefix.startsWith(ns) && (prefix.length() == ns.length() || prefix.charAt(ns.length()) == '/')) {
                     if (ns.length() > namespace.length()) {
@@ -369,7 +374,7 @@ public class DefaultActionMapper implements ActionMapper {
                 name = name.substring(pos + 1);
             }
         }
-
+        //将分离后的action名和命名空间保存到mapping对象
         mapping.setNamespace(namespace);
         mapping.setName(cleanupActionName(name));
     }
