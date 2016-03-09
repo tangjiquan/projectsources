@@ -2,12 +2,16 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="DefaultEncoding" key="selection"/>
+		<item value="HADOOP_CONF_DIR" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="nameStartOpt"/>
+			<item value="HADOOP_CONF_DIR"/>
+			<item value="common_bin"/>
+			<item value="defaultResources"/>
 			<item value="defaultEncoding"/>
 			<item value="createDispatcher"/>
 		</list>
@@ -17,8 +21,8 @@
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="273" key="DIALOG_WIDTH"/>
 		<item value="1|微软雅黑|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|微软雅黑" key="DIALOG_FONT_NAME"/>
-		<item value="399" key="DIALOG_HEIGHT"/>
-		<item value="742" key="DIALOG_X_ORIGIN"/>
-		<item value="140" key="DIALOG_Y_ORIGIN"/>
+		<item value="479" key="DIALOG_HEIGHT"/>
+		<item value="925" key="DIALOG_X_ORIGIN"/>
+		<item value="66" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

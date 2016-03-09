@@ -305,6 +305,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    * @param name resource to be added, the classpath is examined for a file 
    *             with that name.
    */
+  //添加CLASSPATH资源，如："core-default.xml"这种形式
   public void addResource(String name) {
     addResourceObject(name);
   }
@@ -319,6 +320,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    *            examined directly to find the resource, without referring to 
    *            the classpath.
    */
+  //URL，如：http://www.example.com/conf/core-default.xml
   public void addResource(URL url) {
     addResourceObject(url);
   }
@@ -333,6 +335,8 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
    *             examined directly to find the resource, without referring to 
    *             the classpath.
    */
+  //Hadoop文件路径org.apache.hadoop.fs.Path形式的资源，如
+  //hdfs://www.example.com/conf/core-default.xml
   public void addResource(Path file) {
     addResourceObject(file);
   }
@@ -1037,6 +1041,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
     }
   }
 
+  //这里使用延迟加载的设计模式，当真正用到数据的时候会加载进来
   private synchronized Properties getProps() {
     if (properties == null) {
       properties = new Properties();
@@ -1118,6 +1123,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
 
   private void loadResource(Properties properties, Object name, boolean quiet) {
     try {
+    	//得到用于创建DOM解析器的工厂
       DocumentBuilderFactory docBuilderFactory 
         = DocumentBuilderFactory.newInstance();
       //ignore all comments inside the xml file
@@ -1126,6 +1132,13 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
       //allow includes in the xml file
       docBuilderFactory.setNamespaceAware(true);
       try {//支持xInclude机制，也就是在一个xml中可以包含另一个xml文件，就不要多吃addResource
+    	  /*
+    	   * <configuration xmlns:xi="http://www.w3.org/2001/XInclude">
+    	   * 	...
+    	   * 	<xi:include href="conf4performace.xml"/>
+    	   * 	...
+    	   * </configuration>
+    	   */
           docBuilderFactory.setXIncludeAware(true);
       } catch (UnsupportedOperationException e) {
         LOG.error("Failed to set setXIncludeAware(true) for parser "
@@ -1171,7 +1184,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
         }
       } else if (name instanceof InputStream) {
         try {
-          doc = builder.parse((InputStream)name);
+          doc = builder.parse((InputStream)name);//处理configuration子元素
         } finally {
           ((InputStream)name).close();
         }
@@ -1190,6 +1203,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
       }
       if (!"configuration".equals(root.getTagName()))
         LOG.fatal("bad conf file: top-level element not <configuration>");
+      //获取根节点的所有子节点
       NodeList props = root.getChildNodes();
       for (int i = 0; i < props.getLength(); i++) {
         Node propNode = props.item(i);
@@ -1223,6 +1237,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
         if (attr != null) {
           if (value != null) {
             if (!finalParameters.contains(attr)) {
+            	//添加键-值到properties中
               properties.setProperty(attr, value);
               if (storeResource) {
                 updatingResource.put(attr, name.toString());
@@ -1232,6 +1247,7 @@ public class Configuration implements Iterable<Map.Entry<String,String>>,
                      +";  Ignoring.");
             }
           }
+          //该属性标志为final，添加name到finalParameters
           if (finalParameter) {
             finalParameters.add(attr);
           }
