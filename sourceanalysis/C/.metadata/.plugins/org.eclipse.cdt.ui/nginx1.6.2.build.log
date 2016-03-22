@@ -1,0 +1,9 @@
+00:18:55 **** Incremental Build of configuration Debug for project nginx1.6.2 ****
+make all 
+Cannot run program "make": Launching failed
+
+Error: Program "make" not found in PATH
+PATH=[D:\Program Files\eclipse\eclipse-cpp-luna-R-win32-x86_64\eclipse;C:\Program Files (x86)\Common Files\NetSarang;D:\app\Administrator\product\11.2.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\Java\jdk1.8.0_05\bin;D:\Program Files\Apache\apache-maven-3.2.2\bin;D:\Program Files\Apache\apache-ant-1.9.4\bin;D:\Program Files\Mysql\mysql-5.6.19-winx64\bin;D:\Program Files\Apache\apache-tomcat-7.0.54\bin;D:\app\Administrator\product\instantclient_11_2;D:\Program Files\gradle\gradle-2.0\bin;D:\Program Files\jad158g.win;E:\java\Apache\maven\nexus-2.3.1-bundle\nexus-2.3.1-01\bin;D:\Program Files\Subversion\bin;D:\Program Files\TortoiseSVN\bin;D:\Go\bin;D:\Python26;D:\Program Files\scala\scala-2.11.7\bin;C:\MinGW\bin]
+
+00:18:55 Build Finished (took 366ms)
+

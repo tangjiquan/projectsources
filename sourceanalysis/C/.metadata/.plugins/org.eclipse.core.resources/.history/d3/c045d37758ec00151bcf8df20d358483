@@ -1,0 +1,12 @@
+/*
+ * Test.c
+ *
+ *  Created on: 2016年3月17日
+ *      Author: Administrator
+ */
+
+int main(int argc, char **argv) {
+	printf("ddd");
+}
+
+

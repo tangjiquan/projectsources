@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-task-tag-projects-already-scanned=struts-2.3.16.3,Servers,apache-tomcat-7.0.54,hadoop-1.0.0
+task-tag-projects-already-scanned=struts-2.3.16.3,Servers,apache-tomcat-7.0.54,hadoop-1.0.0,hessian-4.0.37,disruptor-3.3.2,el1.0

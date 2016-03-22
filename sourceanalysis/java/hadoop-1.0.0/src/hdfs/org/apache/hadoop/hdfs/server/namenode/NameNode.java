@@ -1287,7 +1287,7 @@ public class NameNode implements ClientProtocol, DatanodeProtocol,
       StringUtils.startupShutdownMessage(NameNode.class, argv, LOG);
       NameNode namenode = createNameNode(argv, null);
       if (namenode != null)
-        namenode.join();
+        namenode.join();//等待NameNode停止
     } catch (Throwable e) {
       LOG.error(StringUtils.stringifyException(e));
       System.exit(-1);
