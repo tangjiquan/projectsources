@@ -2,4 +2,5 @@
 <typeInfoHistroy>
 <typeInfo handle="=apache-tomcat-7.0.54/D:\/Program Files\/Java\/jdk1.7.0_67\/jre\/lib\/rt.jar&lt;java.util.concurrent(ExecutorService.class[ExecutorService" modifiers="1537" timestamp="1409582942499"/>
 <typeInfo handle="=disruptor-3.3.2/D:\/Program Files\/Java\/jdk1.6.0_45\/jre\/lib\/rt.jar&lt;java.util.concurrent(Executors.class[Executors" modifiers="33" timestamp="1405046275924"/>
+<typeInfo handle="=tachyon0.6.0/src&lt;tachyon.command{TFsShell.java[TFsShell" modifiers="1" timestamp="1460646649499"/>
 </typeInfoHistroy>

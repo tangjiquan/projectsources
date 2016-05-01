@@ -535,10 +535,10 @@ public class ImplicitObjects
 	  if (pKey instanceof String) {
 	    // Drain the header enumeration
 	    List l = new ArrayList ();
-	    Enumeration enum = request.getHeaders ((String) pKey);
-	    if (enum != null) {
-	      while (enum.hasMoreElements ()) {
-		l.add (enum.nextElement ());
+	    Enumeration enum1 = request.getHeaders ((String) pKey);
+	    if (enum1!= null) {
+	      while (enum1.hasMoreElements ()) {
+		l.add (enum1.nextElement ());
 	      }
 	    }
 	    String [] ret = (String []) l.toArray (new String [l.size ()]);

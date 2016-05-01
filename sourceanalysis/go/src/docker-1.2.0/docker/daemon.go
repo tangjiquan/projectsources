@@ -79,6 +79,21 @@ func mainDaemon() {
 		daemonCfg.GraphDriver,
 	)
 
+	/**
+
+	Logging	启动Docker容器的日志输出
+	EnableCors	在远程API中提供CORS头
+	Version		Docker的版本
+	SocketGroup	在daemon模式中unix domain socket分配用户名
+	Tls			使用TLS安全传输协议
+	TlsVerify	使用TLS并验证远程客户端
+	TlsCa		指定CA文件路径
+	TlsCert		TLS证书文件路径
+	TlsKey		TLS密钥文件路径
+	BufferRequests	缓存Docker Client请求
+
+
+	*/
 	// Serve api
 	job := eng.Job("serveapi", flHosts...)
 	job.SetenvBool("Logging", true)
