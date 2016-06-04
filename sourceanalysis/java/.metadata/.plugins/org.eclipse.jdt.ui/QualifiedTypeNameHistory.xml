@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="tachyon.TachyonURI"/>
+<fullyQualifiedTypeName name="com.sun.corba.se.spi.ior.Writeable"/>
+<fullyQualifiedTypeName name="tachyon.client.WriteType"/>
+<fullyQualifiedTypeName name="tachyon.client.ReadType"/>
+<fullyQualifiedTypeName name="tachyon.client.TachyonFile"/>
+<fullyQualifiedTypeName name="tachyon.client.FileOutStream"/>
+<fullyQualifiedTypeName name="tachyon.client.TachyonFS"/>
+<fullyQualifiedTypeName name="tachyon.client.InStream"/>
+<fullyQualifiedTypeName name="redis.clients.jedis.JedisPoolConfig"/>
+<fullyQualifiedTypeName name="redis.clients.jedis.JedisPool"/>
+<fullyQualifiedTypeName name="redis.clients.jedis.Jedis"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,71 @@
+########### These MUST be filled in for a storm configuration
+#zookeeper集群的地址
+ storm.zookeeper.servers:
+     - "localhost"
+
+#zookeeper中jstorm的根目录
+ storm.zookeeper.root: "/jstorm"
+ 
+# %JSTORM_HOME% is the jstorm home directory
+# 用来存放配置，jar等
+ storm.local.dir: "%JSTORM_HOME%/data"
+ 
+# 本地库的加载地址
+ java.library.path: "/usr/local/lib:/opt/local/lib:/usr/lib"
+
+# supervisor节点上的worker使用的端口号列表
+ supervisor.slots.ports:
+    - 6800
+    - 6801
+    - 6802
+    - 6803
+
+# Default disable user-define classloader
+# If there are jar conflict between jstorm and application, 
+# please enable it 
+# 默认禁用了用户自定义的类加载器
+ topology.enable.classloader: false
+
+# enable supervisor use cgroup to make resource isolation
+# Before enable it, you should make sure:
+# 	1. Linux version (>= 2.6.18)
+# 	2. Have installed cgroup (check the file's existence:/proc/cgroups)
+#	3. You should start your supervisor on root
+# You can get more about cgroup:
+#   http://t.cn/8s7nexU
+# 是否使用cgroup来做资源的隔离
+ supervisor.enable.cgroup: false
+
+
+### Netty will send multiple messages in one batch  
+### Setting true will improve throughput, but more latency
+# 在使用netty的时候，设置是否一个batch中会有多个消息
+ storm.messaging.netty.transfer.async.batch: true
+ 
+### default worker memory size, unit is byte
+# worker的内存大小
+ worker.memory.size: 2147483648
+
+# Metrics Monitor
+# topology.performance.metrics: it is the switch flag for performance 
+# purpose. When it is disabled, the data of timer and histogram metrics 
+# will not be collected.
+# topology.alimonitor.metrics.post: If it is disable, metrics data
+# will only be printed to log. If it is enabled, the metrics data will be
+# posted to alimonitor besides printing to log.
+# 是否开启监控
+ topology.performance.metrics: true
+
+# 是否将监控数据发给alimonitor
+ topology.alimonitor.metrics.post: false
+
+# UI MultiCluster
+# Following is an example of multicluster UI configuration
+# ui.clusters:
+#     - {
+#         name: "jstorm",
+#         zkRoot: "/jstorm",
+#         zkServers:
+#             [ "localhost"],
+#         zkPort: 2181,
+#       }
